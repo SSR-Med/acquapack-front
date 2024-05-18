@@ -1,0 +1,34 @@
+.pipeline-info-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.pipeline-info-element-container{
+    width: 100%;
+    height: 85%;
+}
+.pipeline-info-element{
+    width: 60%;
+    height: 100%;
+    margin: 0 20%;
+}
+.pipeline-info-inside{
+    width: 95%;
+    height: 95%;
+    margin: 2.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+.pipeline-info-icon-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pipeline-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
