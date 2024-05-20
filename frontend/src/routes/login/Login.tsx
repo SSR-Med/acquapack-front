@@ -8,10 +8,13 @@ import { useState } from "react"
 // Styles
 import { loginTextField, loginSelectField, loginButton } from "../../styles/LoginStyle"
 // Helpers
-import { HandleNumberChange } from "../../helpers/HandleNumberChange"
+import { HandleNumberChange, handlePasswordChange } from "../../helpers/HandleNumberChange"
+import { loginCookie } from "../../helpers/Login/HandleLogin"
+import { useNavigate } from "react-router-dom"
 
 export default function Login(){
-    // Variables}
+    // Variables
+    const navigate = useNavigate()
     // Selects
     const [shift, setShift] = useState<string>("")
     const [documentType, setDocumentType] = useState<string>("")
@@ -31,14 +34,14 @@ export default function Login(){
                              label = "Tipo de documento"
                              onChange = {(e) => setDocumentType(e.target.value as string)}
                             >
-                                <MenuItem value="cedula">Cédula de ciudadanía</MenuItem>
-                                <MenuItem value="cedulaExtranjeria">Cédula de extranjería</MenuItem>
-                                <MenuItem value="tarjetaIdentidad">Tarjeta de identidad</MenuItem>
-                                <MenuItem value="pasaporte">Pasaporte</MenuItem>
+                                <MenuItem value="CC">Cédula de ciudadanía</MenuItem>
+                                <MenuItem value="CE">Cédula de extranjería</MenuItem>
+                                <MenuItem value="TI">Tarjeta de identidad</MenuItem>
+                                <MenuItem value="PP">Pasaporte</MenuItem>
                             </Select>
                         </FormControl>
                         <TextField value={document} onChange={HandleNumberChange(setDocument)} variant="filled" label="Documento" sx={loginTextField}/>
-                        <TextField value={password} onChange={HandleNumberChange(setPassword)} variant="filled" label="Contraseña" type="password" sx={loginTextField}/>
+                        <TextField value={password} onChange={handlePasswordChange(setPassword)} variant="filled" label="Contraseña" type="password" sx={loginTextField}/>
                         <FormControl fullWidth sx={loginSelectField}>
                             <InputLabel>Turno</InputLabel>
                             <Select 
@@ -52,7 +55,13 @@ export default function Login(){
                             </Select>
                         </FormControl>
                         <div className="login-button">
-                            <Button variant="contained" sx={loginButton}>Enviar</Button>
+                            <Button onClick={
+                                () => loginCookie({
+                                    document_type: documentType,
+                                    document: parseInt(document),
+                                    password: password
+                                },navigate)
+                            } variant="contained" sx={loginButton}>Enviar</Button>
                         </div>
                     </div>
                 </div>

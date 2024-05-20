@@ -1,4 +1,4 @@
-const fontSize = "3vw"
+const fontSize = "2vw"
 export const BrCodeTextField = {
     '& .MuiFilledInput-root': {
         backgroundColor: 'D9D9D9',
