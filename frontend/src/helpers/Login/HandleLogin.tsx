@@ -12,7 +12,7 @@ export async function loginCookie(loginSchema: loginSchema,navigate:NavigateFunc
     try{
         const response = await axios.post(`${API_URL}/`, loginSchema)
         Cookies.set("token", response.data.token)
-        navigate("/brcode")
+        navigate("/br_code")
     }catch(error:any){
         Swal.fire({
             icon: "error",

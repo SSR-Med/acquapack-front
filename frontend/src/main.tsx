@@ -9,6 +9,7 @@ import {
 import Login from './routes/login/Login';
 import BrCode from './routes/pipeline/BrCode';
 import PipelineInfo from './routes/pipeline/PipelineInfo';
+import ModifyUser from './routes/User';
 
 // Router
 const router = createBrowserRouter([
@@ -17,13 +18,17 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/brcode",
+    path: "/br_code",
     element: <BrCode />,
   },
   {
-    path: "/pipelineinfo",
+    path: "/pipeline_info",
     element: <PipelineInfo />,
   },
+  {
+    path: "/user",
+    element: <ModifyUser />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

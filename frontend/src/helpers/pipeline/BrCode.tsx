@@ -24,7 +24,7 @@ export async function sendPipelineInfo(brCode:string,navigate: NavigateFunction)
     try{
         const name = await searhBrCode(brCode)
         navigate({
-            pathname: "/pipelineinfo",
+            pathname: "/pipeline_info",
             search: `?reference=${name}`
         })
     }

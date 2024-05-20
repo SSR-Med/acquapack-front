@@ -1,6 +1,7 @@
 // Dependencies
 import {Drawer, Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider} from "@mui/material"
 import {useState,useEffect} from "react"
+import { useNavigate, NavigateFunction } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 import WarningIcon from '@mui/icons-material/Warning';
 // Admin icons
@@ -13,7 +14,8 @@ import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturi
 // Helpers
 import { checkAdmin } from "../helpers/User/CheckAdmin";
 
-function userMenu(){
+
+function userMenu(navigate:NavigateFunction){
     return <>
         <List>
             <ListItem key="Modificar registros" disablePadding>
@@ -43,12 +45,12 @@ function userMenu(){
         </List>
     </>
 }
-function adminMenu(){
+function adminMenu(navigate:NavigateFunction){
     return (
     <>
         <List>
             <ListItem key="Modificar usuario" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={()=> navigate("/user")}>
                     <ListItemIcon>
                         <Person2Icon />
                     </ListItemIcon>
@@ -93,6 +95,7 @@ function adminMenu(){
 }
 
 function BoxMenu(setOpen:React.Dispatch<React.SetStateAction<boolean>>){
+    const navigate = useNavigate()
     const [admin,setAdmin] = useState<boolean>(false)
     useEffect(() =>{
         const getAdmin = async () => {
@@ -104,9 +107,9 @@ function BoxMenu(setOpen:React.Dispatch<React.SetStateAction<boolean>>){
     return (
         <>
             <Box sx={{ width: "30vw" }} role="presentation" onClick={() => setOpen(true)}>
-                {userMenu()}
+                {userMenu(navigate)}
                 {admin && <Divider />}
-                {admin ? adminMenu() : null}
+                {admin ? adminMenu(navigate) : null}
             </Box>
         </>
     )

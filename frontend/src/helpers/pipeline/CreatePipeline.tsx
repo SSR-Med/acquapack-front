@@ -19,7 +19,7 @@ export async function createPipelineRecord(PipelineSchema: PipelineSchema,naviga
             icon: 'success',
             title: '¡Registro creado!',
             didClose: () => {
-                navigate("/brcode")
+                navigate("/br_code")
             }
         })
     }catch(error){

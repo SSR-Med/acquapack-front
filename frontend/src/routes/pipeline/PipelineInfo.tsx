@@ -41,7 +41,7 @@ export default function PipelineInfo(){
                 <div className="pipeline-info-element">
                     <div className="pipeline-info-inside">
                         <div className ="pipeline-info-icon-button">
-                            <IconButton onClick = {() => navigate("/brcode")}>
+                            <IconButton onClick = {() => navigate("/br_code")}>
                                 <ArrowCircleLeftIcon sx={ArrowButtonSize}/>
                             </IconButton>
                         </div>

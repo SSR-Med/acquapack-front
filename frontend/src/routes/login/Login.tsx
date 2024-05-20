@@ -11,12 +11,13 @@ import { loginTextField, loginSelectField, loginButton } from "../../styles/Logi
 import { HandleNumberChange, handlePasswordChange } from "../../helpers/HandleNumberChange"
 import { loginCookie } from "../../helpers/Login/HandleLogin"
 import { useNavigate } from "react-router-dom"
+// Constants
+import { abrev2DocumentType } from "../../constants/Constants"
 
 export default function Login(){
     // Variables
     const navigate = useNavigate()
     // Selects
-    const [shift, setShift] = useState<string>("")
     const [documentType, setDocumentType] = useState<string>("")
     // Values
     const [document, setDocument] = useState<string>("")
@@ -34,26 +35,15 @@ export default function Login(){
                              label = "Tipo de documento"
                              onChange = {(e) => setDocumentType(e.target.value as string)}
                             >
-                                <MenuItem value="CC">Cédula de ciudadanía</MenuItem>
-                                <MenuItem value="CE">Cédula de extranjería</MenuItem>
-                                <MenuItem value="TI">Tarjeta de identidad</MenuItem>
-                                <MenuItem value="PP">Pasaporte</MenuItem>
+                                {
+                                    Object.keys(abrev2DocumentType).map((key) => {
+                                        return <MenuItem value={key}>{abrev2DocumentType[key]}</MenuItem>
+                                    })
+                                }
                             </Select>
                         </FormControl>
                         <TextField value={document} onChange={HandleNumberChange(setDocument)} variant="filled" label="Documento" sx={loginTextField}/>
                         <TextField value={password} onChange={handlePasswordChange(setPassword)} variant="filled" label="Contraseña" type="password" sx={loginTextField}/>
-                        <FormControl fullWidth sx={loginSelectField}>
-                            <InputLabel>Turno</InputLabel>
-                            <Select 
-                             style = {{backgroundColor: "white"}}
-                             value = {shift}
-                             label = "Turno"
-                             onChange = {(e) => setShift(e.target.value as string)}
-                            >
-                                <MenuItem value="diurno">Diurno</MenuItem>
-                                <MenuItem value="nocturno">Nocturno</MenuItem>
-                            </Select>
-                        </FormControl>
                         <div className="login-button">
                             <Button onClick={
                                 () => loginCookie({

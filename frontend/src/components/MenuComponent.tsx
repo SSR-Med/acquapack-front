@@ -32,7 +32,7 @@ export default function MenuComponent(){
                 <IconButton onClick={() => setOpen(true)}>   
                     <MenuIcon sx={IconButtonSize}/>
                 </IconButton>
-                <IconButton onClick={() => navigate("/brcode")}>
+                <IconButton onClick={() => navigate("/br_code")}>
                     <AddIcon sx={IconButtonSize}/>
                 </IconButton>
                 <IconButton onClick= {() => logout(navigate)}>
