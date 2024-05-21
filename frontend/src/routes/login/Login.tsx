@@ -9,7 +9,7 @@ import { useState } from "react"
 import { loginTextField, loginSelectField, loginButton } from "../../styles/LoginStyle"
 // Helpers
 import { HandleNumberChange, handlePasswordChange } from "../../helpers/HandleNumberChange"
-import { loginCookie } from "../../helpers/Login/HandleLogin"
+import { loginCookie } from "../../helpers/login/HandleLogin"
 import { useNavigate } from "react-router-dom"
 // Constants
 import { abrev2DocumentType } from "../../constants/Constants"

@@ -1,6 +1,5 @@
 // Dependencies
-import { Button,
-    FormControl, InputLabel, Select, MenuItem,
+import { FormControl, InputLabel, Select, MenuItem,
  } from "@mui/material";
 import { DataGrid, GridRowId,
     GridToolbarContainer, GridToolbarExport

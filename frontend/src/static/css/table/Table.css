@@ -30,3 +30,6 @@
     display: flex;
     justify-content: space-around;
 }
+.swal2-container{
+    z-index: 10000;
+}

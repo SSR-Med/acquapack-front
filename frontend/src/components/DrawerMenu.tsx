@@ -12,7 +12,7 @@ import DetailsIcon from '@mui/icons-material/Details';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 // Helpers
-import { checkAdmin } from "../helpers/User/CheckAdmin";
+import { checkAdmin } from "../helpers/user/CheckAdmin";
 
 
 function userMenu(navigate:NavigateFunction){
