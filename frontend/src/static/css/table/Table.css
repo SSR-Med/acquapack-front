@@ -24,4 +24,9 @@
     height: 40vh;
     width: 100%;
     overflow: auto;
+    margin-bottom: 2vh;
+}
+.table-modify{
+    display: flex;
+    justify-content: space-around;
 }

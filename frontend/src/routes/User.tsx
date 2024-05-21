@@ -1,11 +1,16 @@
 // Dependencies
 import { useState, useEffect } from "react"
 import { GridColDef } from "@mui/x-data-grid"
+import { Button } from "@mui/material"
 // Components
 import MenuComponent from "../components/MenuComponent"
-import { createButton, searchValues, dataTable } from "../components/TableComponent"
+import { searchValues, dataTable } from "../components/TableComponent"
 // Helpers
 import { getAndTransformUsers } from "../helpers/User/ModifyUser"
+import { changeState } from "../helpers/User/ChangeState"
+import filterUser from "../helpers/User/FilterUser"
+// Styles
+import { crudButtonStyle } from "../styles/TableStyle"
 // Css
 import "../static/css/table/Table.css"
 
@@ -17,10 +22,14 @@ export default function ModifyUser(){
     // Rows and columns
     // Rows
     useEffect(() =>{
-        getAndTransformUsers().then((data) => {
-            setRows(data)
+        getAndTransformUsers().then((data:Array<Record<string,any>>) => {
+            setRows(filterUser({
+                selectValue,
+                searchValue,
+                rows:data
+            }))
         })
-    },[])
+    },[rows])
     const columns: GridColDef[] = [{
         field: "id",
         headerName: "ID",
@@ -64,11 +73,11 @@ export default function ModifyUser(){
                 <main>
                     <div className="table-container">
                         <h1>Configuración de usuarios</h1>
-                        {createButton()}
+                        <Button variant="contained" sx={crudButtonStyle}>Crear</Button>
                         {searchValues({
                             selectMap: {
+                                "document": "Documento",
                                 "name": "Nombre",
-                                "email": "Correo",
                                 "role": "Rol"
                             },
                             searchState: {
@@ -85,6 +94,12 @@ export default function ModifyUser(){
                             columns: columns,
                             setSelectedRowSchema: setSelectedRow
                         })}
+                        <div className="table-modify">
+                            <Button variant="contained" sx={crudButtonStyle}>Modificar</Button>
+                            <Button variant="contained" sx={crudButtonStyle} onClick={
+                                () => changeState(selectedRow?.id)
+                                }>Activar/Desactivar</Button>   
+                        </div>
                     </div>
                 </main>
             </div>

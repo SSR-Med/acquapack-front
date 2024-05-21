@@ -2,18 +2,16 @@
 import { Button,
     FormControl, InputLabel, Select, MenuItem,
  } from "@mui/material";
-import { DataGrid, GridRowId } from '@mui/x-data-grid';
+import { DataGrid, GridRowId,
+    GridToolbarContainer, GridToolbarExport
+ } from '@mui/x-data-grid';
 import { useState } from "react";
 // Styles
-import { CreateButtonStyle, selectFieldStyle} from "../styles/TableStyle";
+import { selectFieldStyle} from "../styles/TableStyle";
 // Schemas
 import { searchValuesSchema, tableSchema } from "../schemas/TableSchema";
 // Helpers
 import { createTextFieldWithIcon } from "../helpers/TableHelper";
-
-export function createButton(){
-    return <Button variant="contained" sx={CreateButtonStyle}>Crear</Button>
-}
 
 export function searchValues(searchValuesSchema: searchValuesSchema){
     return(
@@ -33,6 +31,20 @@ export function searchValues(searchValuesSchema: searchValuesSchema){
         </div>
     )
 }
+
+function CustomToolBar(){
+    return(
+        <GridToolbarContainer>
+            <GridToolbarExport
+            csvOptions={{fileName: 'Usuarios',
+                allColumns: true,
+                delimeter: ';'
+            }}
+            />
+        </GridToolbarContainer>
+    )
+}
+
 export function dataTable(tableSchema: tableSchema){
     const [selectionModel, setSelectionModel] = useState<GridRowId[]>([]);
     return(
@@ -46,6 +58,14 @@ export function dataTable(tableSchema: tableSchema){
                 },
             }}
             pageSizeOptions={[5, 10]}
+            localeText={{
+                toolbarExport: 'Exportar',
+                toolbarExportCSV: 'Exportar a CSV',
+                toolbarExportPrint: 'Imprimir',
+            }}
+            slots={{
+                toolbar: CustomToolBar,
+            }}
             checkboxSelection
             disableColumnMenu
             slotProps={{ pagination: { labelRowsPerPage: 'Filas por página' } }}

@@ -1,4 +1,4 @@
-export const CreateButtonStyle = {
+export const crudButtonStyle = {
     backgroundColor: "#D9D9D9",
     color: "black",
     fontSize: '3vh',
