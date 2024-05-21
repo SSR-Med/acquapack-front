@@ -22,11 +22,11 @@ export async function createPipelineRecord(PipelineSchema: PipelineSchema,naviga
                 navigate("/br_code")
             }
         })
-    }catch(error){
+    }catch(error:any){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Ha ocurrido un error al crear el registro de la tubería',
+            text: error.response.data.message
         })
     }
 }

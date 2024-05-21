@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 // Components
 import MenuComponent from "../../components/MenuComponent"
 // Helpers
-import { HandleDecimalChange } from "../../helpers/HandleNumberChange";
+import { HandleDecimalChange } from "../../helpers/HandleTextFieldChange";
 import { getDate, transformDate } from "../../helpers/pipeline/GetDate";
 import { createPipelineRecord } from "../../helpers/pipeline/CreatePipeline";
 // Styles

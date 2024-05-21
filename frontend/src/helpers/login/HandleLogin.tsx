@@ -17,7 +17,7 @@ export async function loginCookie(loginSchema: loginSchema,navigate:NavigateFunc
         Swal.fire({
             icon: "error",
             title: "Error",
-            text: "Datos incorrectos"
+            text: error.response.data.message
         })
     }
 }

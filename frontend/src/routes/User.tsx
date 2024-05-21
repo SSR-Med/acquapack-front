@@ -24,6 +24,8 @@ export default function ModifyUser(){
     const [rows, setRows] = useState<Array<Record<string,any>>>([])
     // State for crud
     const [open, setOpen] = useState<boolean>(false)
+    // Request state for crud
+    const [request, setRequest] = useState<string>("POST")
     // Select values map
     const mapSelectValuesSearch: Record<string,string> = {
         "document": "number",
@@ -80,13 +82,16 @@ export default function ModifyUser(){
     return (
         <>
             <div className="table-all-container">
-                {crudUser(open,setOpen)}
+                {crudUser(open,setOpen,selectedRow,request)}
                 <MenuComponent/>
                 <main>
                     <div className="table-container">
                         <h1>Configuración de usuarios</h1>
                         <Button variant="contained" sx={crudButtonStyle} onClick={
-                            () => setOpen(true)
+                            () => {
+                                setOpen(true)
+                                setRequest("POST")
+                            }
                         }>Crear</Button>
                         {searchValues({
                             selectMap: {
@@ -109,7 +114,12 @@ export default function ModifyUser(){
                             setSelectedRowSchema: setSelectedRow
                         })}
                         <div className="table-modify">
-                            <Button variant="contained" sx={crudButtonStyle}>Modificar</Button>
+                            <Button variant="contained" sx={crudButtonStyle}
+                            onClick = {() => {
+                                setRequest("PUT")
+                                setOpen(true)
+                            }}
+                            >Modificar</Button>
                             <Button variant="contained" sx={crudButtonStyle} onClick={
                                 () => changeState(selectedRow?.id)
                                 }>Activar/Desactivar</Button>   

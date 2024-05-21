@@ -8,7 +8,7 @@ import { useState } from "react"
 // Styles
 import { loginTextField, loginSelectField, loginButton } from "../../styles/LoginStyle"
 // Helpers
-import { HandleNumberChange, handlePasswordChange } from "../../helpers/HandleNumberChange"
+import { HandleNumberChange, handlePasswordChange } from "../../helpers/HandleTextFieldChange"
 import { loginCookie } from "../../helpers/login/HandleLogin"
 import { useNavigate } from "react-router-dom"
 // Constants

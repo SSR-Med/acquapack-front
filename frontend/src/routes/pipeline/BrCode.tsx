@@ -10,7 +10,7 @@ import MenuComponent from "../../components/MenuComponent"
 // Styles
 import { BrCodeTextField, ArrowButtonSize } from "../../styles/PipelineStyle"
 // Helpers
-import { HandleNumberChange } from "../../helpers/HandleNumberChange"
+import { HandleNumberChange } from "../../helpers/HandleTextFieldChange"
 import { sendPipelineInfo } from "../../helpers/pipeline/BrCode";
 
 export default function BrCode(){

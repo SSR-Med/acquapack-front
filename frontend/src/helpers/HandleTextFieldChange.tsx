@@ -28,3 +28,14 @@ export const HandleDecimalChange = (setter: (value: string) => void) => (
       }
     }
 );
+// Only words in textfield
+// Regex
+const wordRegex = /^[a-zA-Z\s]+$/;
+export const HandleWordChange = (setter: (value: string) => void) => (
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = event.target.value;
+      if (wordRegex.test(newValue) || newValue === "") {
+        setter(newValue); 
+      }
+    }
+);

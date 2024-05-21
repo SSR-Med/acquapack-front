@@ -40,18 +40,18 @@ export async function createUser(data: Record<string,any>){
             text: "El usuario ha sido creado exitosamente"
         })
     }
-    catch(error){
+    catch(error:any){
         Swal.fire({
             title: "Error",
             icon: "error",
-            text: "Ha ocurrido un error al crear el usuario"
+            text: error.response.data.message
         })
     }
 }
 
 export async function modifyUser(data: Record<string,any>){
     try{
-        axios.put(`${API_URL}/admin/id/${data.id}`,data,{
+        await axios.put(`${API_URL}/admin/id/${data.id}`,data,{
             headers: {
                 Authorization: `Bearer ${Cookies.get("token")}`
             }
@@ -62,11 +62,11 @@ export async function modifyUser(data: Record<string,any>){
             text: "El usuario ha sido modificado exitosamente"
         })
     }
-    catch(error){
+    catch(error:any){
         Swal.fire({
             title: "Error",
             icon: "error",
-            text: "Ha ocurrido un error al modificar el usuario"
+            text: error.response.data.message
         })
     }
 }
