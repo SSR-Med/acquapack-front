@@ -2,8 +2,46 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import { GridColDef } from "@mui/x-data-grid";
 // Constants
 import { API_URL, abrev2DocumentType, state2String, englishRole2Spanish } from "../../constants/Constants";
+
+export const columnsUser: GridColDef[] = [{
+    field: "id",
+    headerName: "ID",
+    flex: 1
+},
+{
+    field: "document_type",
+    headerName: "Tipo Documento",
+    flex: 1
+},
+{
+    field: "document",
+    headerName: "Documento",
+    flex: 1
+},
+{
+    field: "name",
+    headerName: "Nombre",
+    flex: 1
+},
+{
+    field: "password",
+    headerName: "Contraseña",
+    flex: 1
+},
+{
+    field: "active",
+    headerName: "Estado",
+    flex: 1
+},
+{
+    field: "role",
+    headerName: "Rol",
+    flex: 1
+}
+]
 
 async function getUsers(){
     const users = axios.get(`${API_URL}/admin`,{

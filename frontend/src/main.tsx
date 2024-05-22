@@ -10,6 +10,7 @@ import Login from './routes/login/Login';
 import BrCode from './routes/pipeline/BrCode';
 import PipelineInfo from './routes/pipeline/PipelineInfo';
 import ModifyUser from './routes/User';
+import ModifyRecord from './routes/Record';
 
 // Router
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/user",
     element: <ModifyUser />,
+  },
+  {
+    path: "/record",
+    element: <ModifyRecord />,
   }
 ]);
 

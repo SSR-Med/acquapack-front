@@ -12,8 +12,8 @@ export const crudButtonStyle = {
 const searchFontSize = '1.5vw';
 const color = "black"
 const backgroundColor = "#D9D9D9"
-const searchWidth = "40vw"
-const searchMargin = "5vw"
+const searchWidth = "35vw"
+const searchMargin = "10vw"
 
 export const selectFieldStyle = {
     '& .MuiSelect-root': {

@@ -19,7 +19,7 @@ function userMenu(navigate:NavigateFunction){
     return <>
         <List>
             <ListItem key="Modificar registros" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick = {() => navigate("/record")}>
                     <ListItemIcon>
                         <EditIcon />
                     </ListItemIcon>

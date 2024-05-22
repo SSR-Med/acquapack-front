@@ -1,13 +1,12 @@
 // Dependencies
 import { useState, useEffect } from "react"
-import { GridColDef } from "@mui/x-data-grid"
 import { Button } from "@mui/material"
 // Components
 import MenuComponent from "../components/MenuComponent"
 import { searchValues, dataTable } from "../components/TableComponent"
 import crudUser from "../components/dialog/user/CrudUser"
 // Helpers
-import { getAndTransformUsers } from "../helpers/user/ModifyUser"
+import { getAndTransformUsers, columnsUser } from "../helpers/user/ModifyUser"
 import { changeState } from "../helpers/user/ChangeState"
 import filterSearch from "../helpers/search/SearchFilter"
 // Styles
@@ -43,42 +42,6 @@ export default function ModifyUser(){
                 searchValue))
         })
     },[rows])
-    const columns: GridColDef[] = [{
-        field: "id",
-        headerName: "ID",
-        flex: 1
-    },
-    {
-        field: "document_type",
-        headerName: "Tipo Documento",
-        flex: 1
-    },
-    {
-        field: "document",
-        headerName: "Documento",
-        flex: 1
-    },
-    {
-        field: "name",
-        headerName: "Nombre",
-        flex: 1
-    },
-    {
-        field: "password",
-        headerName: "Contraseña",
-        flex: 1
-    },
-    {
-        field: "active",
-        headerName: "Estado",
-        flex: 1
-    },
-    {
-        field: "role",
-        headerName: "Rol",
-        flex: 1
-    }
-    ] 
     return (
         <>
             <div className="table-all-container">
@@ -110,7 +73,7 @@ export default function ModifyUser(){
                         })}
                         {dataTable({
                             rows: rows,
-                            columns: columns,
+                            columns: columnsUser,
                             setSelectedRowSchema: setSelectedRow
                         })}
                         <div className="table-modify">
@@ -121,7 +84,10 @@ export default function ModifyUser(){
                             }}
                             >Modificar</Button>
                             <Button variant="contained" sx={crudButtonStyle} onClick={
-                                () => changeState(selectedRow?.id)
+                                () => {
+                                    if(selectedRow != null){
+                                    changeState(selectedRow.id)
+                                }}
                                 }>Activar/Desactivar</Button>   
                         </div>
                     </div>

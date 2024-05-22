@@ -16,6 +16,7 @@
     "@mui/material": "^5.15.18",
     "@mui/x-data-grid": "^7.5.0",
     "axios": "^1.7.0",
+    "dayjs": "^1.11.11",
     "js-cookie": "^3.0.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

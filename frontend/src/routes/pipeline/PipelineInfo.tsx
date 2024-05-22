@@ -52,6 +52,7 @@ export default function PipelineInfo(){
                         <div className="pipeline-button">
                             <Button onClick={async () => {
                                 const currentDate = await getDate();
+                                console.log(currentDate)
                                 createPipelineRecord({
                                     reference: reference,
                                     date: currentDate,
