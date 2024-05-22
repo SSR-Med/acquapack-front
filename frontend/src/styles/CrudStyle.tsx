@@ -23,7 +23,8 @@ export const crudDialogSelectField = {
     '& .MuiInputLabel-root.Mui-focused': {
         color: color,
     },
-    marginTop: "2vh"
+    marginTop: "2vh",
+    backgroundColor: backgroundColor
 }
 
 export const crudDialogButton = {

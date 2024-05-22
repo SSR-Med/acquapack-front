@@ -78,9 +78,34 @@ export async function getAndTransformRecords(){
     })
     return recordsData
 }
+
+export async function modifyPutRecord(row:Record<string,any>){
+    console.log(row)
+    try{
+        await axios.put(`${API_URL}/record/id/${row.id}`,row,{
+            headers: {
+                Authorization: `Bearer ${Cookies.get("token")}`
+            }
+        })
+        Swal.fire({
+            title: "Éxito",
+            text: "Registro modificado",
+            icon: "success"
+        })
+    }
+    catch(error:any){
+        Swal.fire({
+            title: "Error",
+            text: error.response.data.message,
+            icon: "error"
+        
+        })
+    }
+}
+
 export async function deleteRecord(id: number){ 
     try{
-        const response = await axios.delete(`${API_URL}/record/id/${id}`,{
+        await axios.delete(`${API_URL}/record/id/${id}`,{
             headers: {
                 Authorization: `Bearer ${Cookies.get("token")}`
             }

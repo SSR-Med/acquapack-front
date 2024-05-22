@@ -6,6 +6,7 @@ import MenuComponent from "../components/MenuComponent"
 import { searchValues } from "../components/TableComponent"
 import { dataTable } from "../components/TableComponent"
 import { selectTime } from "../components/dialog/record/TimeRecord"
+import crudRecord from "../components/dialog/record/CrudRecord"
 // Helpers
 import filterSearch from "../helpers/search/SearchFilter"
 import { getAndTransformRecords,deleteRecord,
@@ -21,6 +22,7 @@ export default function ModifyRecord(){
     const [selectedRow, setSelectedRow] = useState<Record<string,any> | null>(null)
     const [rows, setRows] = useState<Array<Record<string,any>>>([])
     const [selectDate, setSelectDate] = useState<string>("")
+    const [open,setOpen] = useState<boolean>(false)
     // Select values map
     const mapSelectValuesSearch: Record<string,string> = {
         "document": "number",
@@ -40,6 +42,7 @@ export default function ModifyRecord(){
         <>
             <div className="table-all-container">
                 <MenuComponent/>
+                {crudRecord(open,setOpen,selectedRow)}
                 <main>
                     <div className="table-container">
                         <h1>Configuración de registros</h1>
@@ -65,7 +68,9 @@ export default function ModifyRecord(){
                             setSelectedRowSchema: setSelectedRow
                         })}
                         <div className="table-modify">
-                            <Button variant="contained" sx={crudButtonStyle}>Modificar</Button>
+                            <Button variant="contained" 
+                            onClick = {() => setOpen(true)}
+                            sx={crudButtonStyle}>Modificar</Button>
                             <Button variant="contained" onClick={() => {
                                 if(selectedRow != null){
                                     deleteRecord(selectedRow.id)
