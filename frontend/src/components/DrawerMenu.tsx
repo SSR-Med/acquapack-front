@@ -82,7 +82,7 @@ function adminMenu(navigate:NavigateFunction){
                 </ListItemButton>
             </ListItem>
             <ListItem key="Modificar referencias" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick= {() => navigate("/reference")}>
                     <ListItemIcon>
                         <DetailsIcon/>
                     </ListItemIcon>

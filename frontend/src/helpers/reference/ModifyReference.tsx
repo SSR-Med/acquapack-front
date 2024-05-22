@@ -2,8 +2,27 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import { GridColDef } from "@mui/x-data-grid";
 // Constants
 import { API_URL } from "../../constants/Constants";
+
+export const columnsReference: GridColDef[] = [
+    {
+        field: "id",
+        headerName: "ID",
+        flex: 1
+    },
+    {
+        field: "id_number",
+        headerName: "Código de barras",
+        flex: 1
+    },
+    {
+        field: "name",
+        headerName: "Nombre",
+        flex: 1
+    },
+]
 
 export async function getReferences(){
     try{
@@ -33,6 +52,28 @@ export async function getReferencesNames(){
         Swal.fire({
             title: "Error",
             text: "No se pudieron obtener las referencias",
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    }
+}
+
+export async function deleteReference(id:number){
+    try{
+        await axios.delete(`${API_URL}/reference/id/${id}`,{
+            headers: {
+                "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+        })
+        Swal.fire({
+            title: "Exito",
+            text: "Referencia eliminada",
+            icon: "success"
+        })
+    }catch(error){
+        Swal.fire({
+            title: "Error",
+            text: "No se pudo eliminar la referencia",
             icon: "error",
             confirmButtonText: "Aceptar"
         })

@@ -35,7 +35,7 @@ function CustomToolBar(){
     return(
         <GridToolbarContainer>
             <GridToolbarExport
-            csvOptions={{fileName: 'Usuarios',
+            csvOptions={{fileName: 'registros',
                 allColumns: true,
                 delimeter: ';'
             }}

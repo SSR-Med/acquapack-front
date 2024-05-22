@@ -2,18 +2,18 @@
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
 // Components
-import MenuComponent from "../components/MenuComponent"
-import { searchValues } from "../components/TableComponent"
-import { dataTable } from "../components/TableComponent"
-import { selectTime } from "../components/dialog/record/TimeRecord"
-import crudRecord from "../components/dialog/record/CrudRecord"
+import MenuComponent from "../../components/MenuComponent"
+import { searchValues } from "../../components/TableComponent"
+import { dataTable } from "../../components/TableComponent"
+import { selectTime } from "../../components/dialog/record/TimeRecord"
+import crudRecord from "../../components/dialog/record/CrudRecord"
 // Helpers
-import filterSearch from "../helpers/search/SearchFilter"
+import filterSearch from "../../helpers/search/SearchFilter"
 import { getAndTransformRecords,deleteRecord,
-     columnsRecord } from "../helpers/record/ModifyRecord"
-import { filterRowsByTime } from "../components/dialog/record/TimeRecord"
+     columnsRecord } from "../../helpers/record/ModifyRecord"
+import { filterRowsByTime } from "../../components/dialog/record/TimeRecord"
 // Style
-import { crudButtonStyle } from "../styles/TableStyle"
+import { crudButtonStyle } from "../../styles/TableStyle"
 
 export default function ModifyRecord(){
     // Variables

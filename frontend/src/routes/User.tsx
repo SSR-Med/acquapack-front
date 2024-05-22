@@ -1,6 +1,7 @@
 // Dependencies
 import { useState, useEffect } from "react"
 import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 // Components
 import MenuComponent from "../components/MenuComponent"
 import { searchValues, dataTable } from "../components/TableComponent"
@@ -9,6 +10,7 @@ import crudUser from "../components/dialog/user/CrudUser"
 import { getAndTransformUsers, columnsUser } from "../helpers/user/ModifyUser"
 import { changeState } from "../helpers/user/ChangeState"
 import filterSearch from "../helpers/search/SearchFilter"
+import { userRedirect } from "../helpers/user/CheckAdmin"
 // Styles
 import { crudButtonStyle } from "../styles/TableStyle"
 // Css
@@ -16,6 +18,7 @@ import "../static/css/table/Table.css"
 
 export default function ModifyUser(){
     // Variables 
+    const navigate = useNavigate()
     // States
     const [selectValue, setSelectValue] = useState<string>("")
     const [searchValue, setSearchValue] = useState<string>("")
@@ -34,6 +37,7 @@ export default function ModifyUser(){
     // Rows and columns
     // Rows
     useEffect(() =>{
+        userRedirect(navigate)
         getAndTransformUsers().then((data:Array<Record<string,any>>) => {
             setRows(filterSearch(
                 data,
