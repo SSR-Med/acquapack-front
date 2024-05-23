@@ -58,6 +58,51 @@ export async function getReferencesNames(){
     }
 }
 
+export async function createReference(data:Record<string,any>){
+    try{
+        await axios.post(`${API_URL}/reference`,data,{
+            headers: {
+                "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+        })
+        Swal.fire({
+            title: "Exito",
+            text: "Referencia creada",
+            icon: "success"
+        })
+    }catch(error:any){
+        Swal.fire({
+            title: "Error",
+            text: error.response.data.message,
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    }
+}
+
+export async function modifyReference(data:Record<string,any>){
+    try{
+        await axios.put(`${API_URL}/reference/id/${data.id}`,data,{
+            headers: {
+                "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+        })
+        Swal.fire({
+            title: "Exito",
+            text: "Referencia modificada",
+            icon: "success"
+        })
+    }catch(error:any){
+        Swal.fire({
+            title: "Error",
+            text: error.response.data.message,
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    
+    }
+}
+
 export async function deleteReference(id:number){
     try{
         await axios.delete(`${API_URL}/reference/id/${id}`,{

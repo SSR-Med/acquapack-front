@@ -4,13 +4,14 @@ import { FormControl, InputLabel, Select, MenuItem,
 import { DataGrid, GridRowId,
     GridToolbarContainer, GridToolbarExport
  } from '@mui/x-data-grid';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Styles
 import { selectFieldStyle} from "../styles/TableStyle";
 // Schemas
 import { searchValuesSchema, tableSchema } from "../schemas/TableSchema";
 // Helpers
 import { createTextFieldWithIcon } from "../helpers/TableHelper";
+import { formatDate2Csv } from "../helpers/pipeline/GetDate";
 
 export function searchValues(searchValuesSchema: searchValuesSchema){
     return(
@@ -31,14 +32,21 @@ export function searchValues(searchValuesSchema: searchValuesSchema){
     )
 }
 
-function CustomToolBar(){
-    return(
+function CustomToolBar():JSX.Element{
+    const [fileName, setFileName] = useState<string>("")
+    useEffect(() => {
+        formatDate2Csv("Excel").then((date) => {
+            setFileName(date)
+        })
+    }, [])
+    return (
         <GridToolbarContainer>
             <GridToolbarExport
-            csvOptions={{fileName: 'registros',
-                allColumns: true,
-                delimeter: ';'
-            }}
+                csvOptions={{
+                    fileName: fileName,
+                    allColumns: true,
+                    delimeter: ';'
+                }}
             />
         </GridToolbarContainer>
     )
@@ -63,11 +71,12 @@ export function dataTable(tableSchema: tableSchema){
                 toolbarExportPrint: 'Imprimir',
             }}
             slots={{
-                toolbar: CustomToolBar,
+                toolbar: CustomToolBar
             }}
             checkboxSelection
             disableColumnMenu
-            slotProps={{ pagination: { labelRowsPerPage: 'Filas por página' } }}
+            slotProps={{ pagination: { labelRowsPerPage: 'Filas por página' }
+            }}
             rowSelectionModel={selectionModel}
             hideFooterSelectedRowCount
             onRowSelectionModelChange={(selection:any) => {

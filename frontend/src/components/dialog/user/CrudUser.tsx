@@ -9,9 +9,8 @@ import { crudDialogButton,crudDialogSelectField,crudDialogTextField } from "../.
 // Constants
 import { abrev2DocumentType,documentType2Abrev, string2State,spanishRole2English } from "../../../constants/Constants";
 // Helpers
-import { HandleNumberChange, handlePasswordChange } from "../../../helpers/HandleTextFieldChange";
-import { createUser, modifyUser } from "../../../helpers/user/ModifyUser";
-import { HandleWordChange } from "../../../helpers/HandleTextFieldChange";
+import { HandleNumberChange, handlePasswordChange, HandleWordChange } from "../../../helpers/HandleTextFieldChange";
+import { createUser, modifyUser, } from "../../../helpers/user/ModifyUser";
 
 export default function crudUser(open:boolean,setOpen:React.Dispatch<React.SetStateAction<boolean>>,
     modifyRow:Record<string,any>|null, request: string

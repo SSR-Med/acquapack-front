@@ -12,6 +12,7 @@ import { searchValues } from "../../components/TableComponent"
 import { columnsReference, getReferences, deleteReference } from "../../helpers/reference/ModifyReference"
 import { userRedirect } from "../../helpers/user/CheckAdmin"
 import filterSearch from "../../helpers/search/SearchFilter"
+import crudReference from "../../components/dialog/record/CrudReference"
 
 export default function ModifyReference(){
     // Variables
@@ -40,6 +41,7 @@ export default function ModifyReference(){
     })
     return (
         <div className="table-all-container">
+            {crudReference(open,setOpen,selectedRow,request)}
             <MenuComponent/>
             <main>
                 <div className="table-container">
@@ -71,7 +73,10 @@ export default function ModifyReference(){
                         })}
                         <div className="table-modify">
                             <Button variant="contained" 
-                            onClick = {() => setOpen(true)}
+                            onClick = {() => {
+                                setOpen(true)
+                                setRequest("PUT")
+                            }}
                             sx={crudButtonStyle}>Modificar</Button>
                             <Button variant="contained"sx={crudButtonStyle}
                             onClick={()=>{
