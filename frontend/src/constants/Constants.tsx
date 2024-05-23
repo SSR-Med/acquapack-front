@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:3000"
+export const API_URL = "https://acquapark-backend.onrender.com"
 export const months: Record<string,string> = {
     "1": "enero",
     "2": "febrero",
