@@ -13,6 +13,8 @@ import ModifyUser from './routes/User';
 import ModifyRecord from './routes/record/Record';
 import { NotFound } from './routes/error/Error';
 import ModifyReference from './routes/record/Reference';
+import Bug from './routes/bug/Bug';
+import Machine from './routes/bug/Machine';
 
 // Router
 const router = createBrowserRouter([
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
   {
     path: "/reference",
     element: <ModifyReference />,
+  },
+  {
+    path: "/bug",
+    element: <Bug />,
+  },
+  {
+    path: "/machine",
+    element: <Machine />,
   },
   {
     path: "*",

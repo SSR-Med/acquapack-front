@@ -26,20 +26,20 @@ function userMenu(navigate:NavigateFunction){
                     <ListItemText primary="Modificar registros" />
                 </ListItemButton>
             </ListItem>
-            <ListItem key="Crear fallos" disablePadding>
+            <ListItem key="Crear alarmas" disablePadding>
                 <ListItemButton>
                     <ListItemIcon>
                         <WarningIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Crear fallos" />
+                    <ListItemText primary="Crear alarmas" />
                 </ListItemButton>
             </ListItem>
-            <ListItem key="Modificar fallos" disablePadding>
+            <ListItem key="Modificar alarmas" disablePadding>
                 <ListItemButton>
                     <ListItemIcon>
                         <ReportGmailerrorredIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Modificar fallos" />
+                    <ListItemText primary="Modificar alarmas" />
                 </ListItemButton>
             </ListItem>
         </List>
@@ -65,20 +65,20 @@ function adminMenu(navigate:NavigateFunction){
                     <ListItemText primary="Log" />
                 </ListItemButton>
             </ListItem>
-            <ListItem key="Modificar nombres fallos" disablePadding>
-                <ListItemButton>
+            <ListItem key="Modificar fallos" disablePadding>
+                <ListItemButton onClick= {() => navigate("/bug")}>
                     <ListItemIcon>
                         <FireplaceIcon/>
                     </ListItemIcon>
-                    <ListItemText primary="Modificar nombres de fallos" />
+                    <ListItemText primary="Modificar fallos" />
                 </ListItemButton>
             </ListItem>
-            <ListItem key="Modificar maquinarias" disablePadding>
-                <ListItemButton>
+            <ListItem key="Modificar maquinas" disablePadding>
+                <ListItemButton onClick= {() => navigate("/machine")}>
                     <ListItemIcon>
                         <PrecisionManufacturingIcon/>
                     </ListItemIcon>
-                    <ListItemText primary="Modificar maquinarias" />
+                    <ListItemText primary="Modificar maquinas" />
                 </ListItemButton>
             </ListItem>
             <ListItem key="Modificar referencias" disablePadding>
