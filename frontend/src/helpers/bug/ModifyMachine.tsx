@@ -106,3 +106,18 @@ export async function modifyMachine(data:Record<string,any>){
         })
     }
 }
+
+export async function getMachineNames(){
+    try{    
+        const machines = await getMachines()
+        const machineNames = machines.map((machine:Record<string,any>) => machine.name)
+        return machineNames
+    }catch(error){
+        Swal.fire({
+            title: "Error",
+            text: "No se pudieron obtener los nombres de las máquinas",
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    }
+}

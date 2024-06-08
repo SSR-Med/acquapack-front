@@ -15,6 +15,8 @@ import { NotFound } from './routes/error/Error';
 import ModifyReference from './routes/record/Reference';
 import Bug from './routes/bug/Bug';
 import Machine from './routes/bug/Machine';
+import Alert from './routes/bug/Alert';
+import AlertTable from './routes/bug/AlertTable';
 
 // Router
 const router = createBrowserRouter([
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
   {
     path: "/machine",
     element: <Machine />,
+  },
+  {
+    path: "/alert",
+    element: <Alert />,
+  },
+  {
+    path: "/alert_table",
+    element: <AlertTable />,
   },
   {
     path: "*",

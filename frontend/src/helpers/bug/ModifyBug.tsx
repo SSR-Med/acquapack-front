@@ -106,3 +106,18 @@ export async function modifyBug(data:Record<string,any>){
         })
     }
 }
+
+export async function getBugNames(){
+    try{
+        const bugs = await getBugs()
+        const bugNames: Set<string> = new Set(bugs.map((bug:Record<string,any>) => bug.name))
+        return bugNames
+    }catch(error){
+        Swal.fire({
+            title: "Error",
+            text: "No se pudieron obtener los nombres de los fallos",
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    }
+}

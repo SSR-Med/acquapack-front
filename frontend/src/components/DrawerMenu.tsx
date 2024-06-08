@@ -27,7 +27,7 @@ function userMenu(navigate:NavigateFunction){
                 </ListItemButton>
             </ListItem>
             <ListItem key="Crear alarmas" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick = {() => navigate("/alert")}>
                     <ListItemIcon>
                         <WarningIcon />
                     </ListItemIcon>
@@ -35,7 +35,7 @@ function userMenu(navigate:NavigateFunction){
                 </ListItemButton>
             </ListItem>
             <ListItem key="Modificar alarmas" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick= {()=> navigate("/alert_table")}>
                     <ListItemIcon>
                         <ReportGmailerrorredIcon />
                     </ListItemIcon>

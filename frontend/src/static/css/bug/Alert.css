@@ -1,0 +1,29 @@
+.alert-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.alert-container main{
+    width: 100%;
+    height: 85%;
+}
+.alert-element{
+    width: 60%;
+    height: 100%;
+    margin: 0 20%;
+}
+.alert-inside{
+    width: 95%;
+    height: 95%;
+    margin: 15% 2.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+.alert-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
