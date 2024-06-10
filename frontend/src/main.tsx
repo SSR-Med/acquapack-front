@@ -17,6 +17,7 @@ import Bug from './routes/bug/Bug';
 import Machine from './routes/bug/Machine';
 import Alert from './routes/bug/Alert';
 import AlertTable from './routes/bug/AlertTable';
+import Log from './routes/log/Log';
 
 // Router
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: "/alert_table",
     element: <AlertTable />,
+  },
+  {
+    path: "/log",
+    element: <Log />,
   },
   {
     path: "*",

@@ -58,7 +58,7 @@ function adminMenu(navigate:NavigateFunction){
                 </ListItemButton>
             </ListItem>
             <ListItem key="Log" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick= {() => navigate("/log")}>
                     <ListItemIcon>
                         <LogoDevIcon/>
                     </ListItemIcon>
