@@ -6,27 +6,22 @@ import { GridColDef } from "@mui/x-data-grid";
 // Constants
 import { API_URL } from "../../constants/Constants";
 
-export const columnsReference: GridColDef[] = [
+export const columnsBug: GridColDef[] = [
     {
         field: "id",
         headerName: "ID",
         flex: 1
     },
     {
-        field: "id_number",
-        headerName: "Código de barras",
-        flex: 1
-    },
-    {
         field: "name",
         headerName: "Nombre",
         flex: 1
-    },
+    }
 ]
 
-export async function getReferences(){
+export async function getBugs(){
     try{
-        const response = await axios.get(`${API_URL}/reference/`,{
+        const response = await axios.get(`${API_URL}/bug/`,{
             headers: {
                 "Authorization": `Bearer ${Cookies.get("token")}`
             }
@@ -36,38 +31,70 @@ export async function getReferences(){
     catch(error){
         Swal.fire({
             title: "Error",
-            text: "No se pudieron obtener las referencias",
+            text: "No se pudieron obtener los fallos",
             icon: "error",
             confirmButtonText: "Aceptar"
         })
     }
 }
 
-export async function getReferencesNames(){
+export async function deleteBug(id:number){
     try{
-        const references = await getReferences()
-        const names: Set<string> = new Set(references.map((reference:Record<string,any>) => reference.name))
-        return names
-    }catch(error){
-        Swal.fire({
-            title: "Error",
-            text: "No se pudieron obtener las referencias",
-            icon: "error",
-            confirmButtonText: "Aceptar"
-        })
-    }
-}
-
-export async function createReference(data:Record<string,any>){
-    try{
-        await axios.post(`${API_URL}/reference`,data,{
+        await axios.delete(`${API_URL}/bug/${id}`,{
             headers: {
                 "Authorization": `Bearer ${Cookies.get("token")}`
             }
         })
         Swal.fire({
             title: "Éxito",
-            text: "Referencia creada",
+            text: "Fallo eliminado",
+            icon: "success",
+            confirmButtonText: "Aceptar"
+        })
+    }
+    catch(error:any){
+        Swal.fire({
+            title: "Error",
+            text: error.response.data.message,
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    }
+}
+
+export async function createBug(data:Record<string,any>){
+    try{
+        await axios.post(`${API_URL}/bug/`,data,{
+            headers: {
+                "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+        })
+        Swal.fire({
+            title: "Éxito",
+            text: "Fallo creado",
+            icon: "success"
+        
+        })
+    }catch(error:any){
+        Swal.fire({
+            title: "Error",
+            text: error.response.data.message,
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        })
+    }
+}
+
+export async function modifyBug(data:Record<string,any>){
+    try{
+        await axios.put(`${API_URL}/bug/${data.id}`,data,{
+            headers: {
+                "Authorization": `Bearer ${Cookies.get("token")}`
+            }
+        })
+        Swal.fire({
+            title: "Éxito",
+            text: "Fallo modificado",
             icon: "success"
         })
     }catch(error:any){
@@ -80,45 +107,15 @@ export async function createReference(data:Record<string,any>){
     }
 }
 
-export async function modifyReference(data:Record<string,any>){
+export async function getBugNames(){
     try{
-        await axios.put(`${API_URL}/reference/id/${data.id}`,data,{
-            headers: {
-                "Authorization": `Bearer ${Cookies.get("token")}`
-            }
-        })
-        Swal.fire({
-            title: "Éxito",
-            text: "Referencia modificada",
-            icon: "success"
-        })
-    }catch(error:any){
-        Swal.fire({
-            title: "Error",
-            text: error.response.data.message,
-            icon: "error",
-            confirmButtonText: "Aceptar"
-        })
-    
-    }
-}
-
-export async function deleteReference(id:number){
-    try{
-        await axios.delete(`${API_URL}/reference/id/${id}`,{
-            headers: {
-                "Authorization": `Bearer ${Cookies.get("token")}`
-            }
-        })
-        Swal.fire({
-            title: "Éxito",
-            text: "Referencia eliminada",
-            icon: "success"
-        })
+        const bugs = await getBugs()
+        const bugNames: Set<string> = new Set(bugs.map((bug:Record<string,any>) => bug.name))
+        return bugNames
     }catch(error){
         Swal.fire({
             title: "Error",
-            text: "No se pudo eliminar la referencia",
+            text: "No se pudieron obtener los nombres de los fallos",
             icon: "error",
             confirmButtonText: "Aceptar"
         })

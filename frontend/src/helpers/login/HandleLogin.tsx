@@ -10,7 +10,7 @@ import { API_URL } from "../../constants/Constants"
 
 export async function loginCookie(loginSchema: loginSchema,navigate:NavigateFunction){
     try{
-        const response = await axios.post(`${API_URL}/`, loginSchema)
+        const response = await axios.post(`${API_URL}/login`, loginSchema)
         Cookies.set("token", response.data.token)
         navigate("/br_code")
     }catch(error:any){

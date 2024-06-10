@@ -80,7 +80,6 @@ export async function getAndTransformRecords(){
 }
 
 export async function modifyPutRecord(row:Record<string,any>){
-    console.log(row)
     try{
         await axios.put(`${API_URL}/record/id/${row.id}`,row,{
             headers: {
